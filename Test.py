@@ -25,46 +25,69 @@
 #       ô
 # => This is just some random operations i came up with, adjust to your need when coding 
 
+from array import *
+
 class TuringMachine:
     def __init__(self, transitions, init_state, accept_states, input_tape):
         self.transitions = transitions
         self.current_state = init_state
         self.accept_states = accept_states
-        self.tape = ["_"] # Initialize the tape with a blank symbol
+        self.input_tape = input_tape
+        self.x_tape = [""] # Initialize the x tape with a blank symbol
+        self.y_tape = [""] # Initialize the y tape with a blank symbol
         self.head = 0 # Initialize the tape head postion
     
     # Define what the turing machine does
-    def operations(self):
-      current_symbol = self.tape[self.head]
-      if(self.current_state, current_symbol) in self.transitions:
+    def step(self):
+      current_state = self.transitions[0][0]
+      input_symbol = self.transitions[0][1]
       
-transitions = {
-  ("q0", "1", "0", "R", "q1")
-  ("q0", "0", "0", "R", "q1")
-  ("q0", "#", "0", "H", "qH")
-  ("q1", "1", "0", "R", "q1")
-  ("q1", "0", "0", "R", "q1")
-  ("q1", "#", "0", "R", "q2")
-  ("q2", "1", "0", "R", "q2") 
-  ("q2", "0", "0", "R", "q2") 
-  ("q2", "#", "0", "R", "q3") 
-  ("q3", "1", "0", "R", "q3") 
-  ("q3", "0", "0", "R", "q3") 
-  ("q3", "#", "0", "R", "q4")
-  ("q4", "0", "0", "0", "q5") 
-  ("q5", "0", "0", "0", "q6") 
-  ("q6", "0", "1", "R", "q6") 
-  ("q6", "0", "0", "R", "q6")
+      match current_state:
+        case "q0":
+          if(input_symbol == "1" and input_symbol == "0"):
+            self.tape.append(input_symbol)
+            if(move_direction)
+          else:
+            exit()
+        
+        case "q1":
+          if(input_symbol == "1" and input_symbol == "0"):
+            self.tape.append(input_symbol)
+            
+            
+        case "q2":
+          if(input_symbol == "1" and input_symbol == "0"):
+            self.tape.append(input_symbol)
+          
+          
+        
+transitions = [
+  ("q0", "1", "0", "R", "q1"),
+  ("q0", "0", "0", "R", "q1"),
+  ("q0", "#", "0", "H", "qH"),
+  ("q1", "1", "0", "R", "q1"),
+  ("q1", "0", "0", "R", "q1"),
+  ("q1", "#", "0", "R", "q2"),
+  ("q2", "1", "0", "R", "q2"),
+  ("q2", "0", "0", "R", "q2"),
+  ("q2", "#", "0", "R", "q3"), 
+  ("q3", "1", "0", "R", "q3"), 
+  ("q3", "0", "0", "R", "q3"), 
+  ("q3", "#", "0", "R", "q4"),
+  ("q4", "0", "0", "0", "q5"), 
+  ("q5", "0", "0", "0", "q6"), 
+  ("q6", "0", "1", "R", "q6"), 
+  ("q6", "0", "0", "R", "q6"),
   ("q6", "#", "#", "H", "qH")
   
-}
+]
 
 init_state = "q0"
-accept_states = ["q1", "q2", "q3", "q4", "q5", "q6"]
+accept_states = ["q0", "q1", "q2", "q3", "q4", "q5", "q6"]
 input_tape = ["1", "0", "1", "#", "1", "1", "1"]
 
 tm = TuringMachine(transitions, init_state, accept_states, input_tape)
-        
+tm.step()
 
 
      
